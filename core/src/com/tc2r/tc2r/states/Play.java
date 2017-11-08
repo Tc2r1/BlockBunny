@@ -8,11 +8,14 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.tc2r.tc2r.handlers.B2DVars;
 import com.tc2r.tc2r.handlers.GameStateManager;
+import com.tc2r.tc2r.handlers.MyContactListener;
+import com.tc2r.tc2r.handlers.MyInput;
 import com.tc2r.tc2r.myGame;
 
 import static com.tc2r.tc2r.handlers.B2DVars.PPM;
@@ -34,6 +37,8 @@ public class Play extends GameState {
 		super(gameStateManager);
 
 		world = new World(new Vector2(0, -9.81f), true);
+		world.setContactListener(new MyContactListener());
+
 		b2dr = new Box2DDebugRenderer();
 
 		// Create platform
@@ -49,7 +54,8 @@ public class Play extends GameState {
 		fdef.shape = shape;
 		fdef.filter.categoryBits = B2DVars.BIT_GROUND;
 		fdef.filter.maskBits = B2DVars.BIT_BOX | B2DVars.BIT_BALL;
-		body.createFixture(fdef);
+		Fixture fixtureGround = body.createFixture(fdef);
+		fixtureGround.setUserData("box");
 
 		// create falling box
 
@@ -66,7 +72,9 @@ public class Play extends GameState {
 						B2DVars.BIT_GROUND |
 										B2DVars.BIT_BOX;
 		fdef.restitution = 1f;
-		body.createFixture(fdef);
+
+		Fixture fixtureBox = body.createFixture(fdef);
+		fixtureBox.setUserData("box");
 
 		//create ball
 		bDef.position.set(160 / PPM, 220 / PPM);
@@ -81,8 +89,9 @@ public class Play extends GameState {
 						B2DVars.BIT_GROUND |
 										B2DVars.BIT_BALL;
 
+		Fixture fixture = body.createFixture(fdef);
+		fixture.setUserData("ball");
 
-		body.createFixture(fdef);
 
 		// set up box2d Cam
 		b2dCam = new OrthographicCamera();
@@ -91,6 +100,14 @@ public class Play extends GameState {
 
 	@Override
 	public void handleInput() {
+
+		if(MyInput.isPressed(MyInput.BUTTON1)){
+			System.out.println("Pressed Z");
+		}
+
+		if(MyInput.isDown(MyInput.BUTTON2)){
+			System.out.println("HOLD X");
+		}
 
 	}
 

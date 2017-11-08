@@ -2,10 +2,11 @@ package com.tc2r.tc2r;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tc2r.tc2r.handlers.GameStateManager;
+import com.tc2r.tc2r.handlers.MyInput;
+import com.tc2r.tc2r.handlers.MyInputProcessor;
 
 public class myGame extends ApplicationAdapter {
 
@@ -25,6 +26,8 @@ public class myGame extends ApplicationAdapter {
 
 	@Override
 	public void create() {
+
+		Gdx.input.setInputProcessor(new MyInputProcessor());
 
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
@@ -46,6 +49,7 @@ public class myGame extends ApplicationAdapter {
 			accum -= STEP;
 			gsm.update(STEP);
 			gsm.render();
+			MyInput.update();
 		}
 
 	}
