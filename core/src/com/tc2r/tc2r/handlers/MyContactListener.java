@@ -13,19 +13,54 @@ import com.badlogic.gdx.physics.box2d.Manifold;
  */
 public class MyContactListener implements ContactListener {
 
+	private int numFootCount;
+
+
 	@Override
 	public void beginContact(Contact contact) {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
 
+		int cDef = fa.getFilterData().categoryBits | fb.getFilterData().categoryBits;
 
-
+		switch(cDef) {
+			case B2DVars.BIT_PLAYER | B2DVars.BIT_RED:
+				if (fa.getFilterData().categoryBits == B2DVars.BIT_PLAYER) {
+					if(fa.getUserData().equals("foot")) {
+						numFootCount++;
+					}
+				}
+				if (fb.getFilterData().categoryBits == B2DVars.BIT_PLAYER) {
+					if(fb.getUserData().equals("foot")) {
+						numFootCount++;
+					}
+				}
+				break;
+		}
 
 	}
 
+
 	@Override
 	public void endContact(Contact contact) {
+		Fixture fa = contact.getFixtureA();
+		Fixture fb = contact.getFixtureB();
 
+		int cDef = fa.getFilterData().categoryBits | fb.getFilterData().categoryBits;
+
+		if (fa.getUserData() != null && fa.getUserData().equals("foot")){
+			numFootCount--;
+
+		}
+
+		if (fb.getUserData() != null && fb.getUserData().equals("foot")){
+			numFootCount--;
+
+		}
+	}
+
+	public boolean isPlayerOnGround() {
+		return (numFootCount > 0);
 	}
 
 

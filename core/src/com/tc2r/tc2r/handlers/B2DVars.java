@@ -13,8 +13,9 @@ public class B2DVars {
 	// category bits
 	public static final short BIT_NOTHING = 0;       // collides with nothing.
 	public static final short BIT_DEFAULT = 1;       // automatic default if unset
-	public static final short BIT_GROUND = 1  << 1;  // == 2
-	public static final short BIT_BOX = 1     << 2;  // == 4
-	public static final short BIT_BALL = 1    << 3;  // == 8
-	public static final short BIT_VEGGIES = 1 << 4;  // == 16
+	public static final short BIT_PLAYER = 1 << 1;  // == 2
+	public static final short BIT_RED = 1    << 2;  // == 4
+	public static final short BIT_GREEN = 1  << 3;  // == 4
+	public static final short BIT_BLUE = 1   << 4;  // == 4
+
 }

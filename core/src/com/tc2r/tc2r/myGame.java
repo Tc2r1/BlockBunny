@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.tc2r.tc2r.handlers.Content;
 import com.tc2r.tc2r.handlers.GameStateManager;
 import com.tc2r.tc2r.handlers.MyInput;
 import com.tc2r.tc2r.handlers.MyInputProcessor;
@@ -24,10 +25,15 @@ public class myGame extends ApplicationAdapter {
 
 	private GameStateManager gsm;
 
+	public static Content res;
+
 	@Override
 	public void create() {
 
 		Gdx.input.setInputProcessor(new MyInputProcessor());
+
+		res = new Content();
+		res.loadTexture("images/bunny.png", "bunny");
 
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
@@ -51,6 +57,7 @@ public class myGame extends ApplicationAdapter {
 			gsm.render();
 			MyInput.update();
 		}
+
 
 	}
 
