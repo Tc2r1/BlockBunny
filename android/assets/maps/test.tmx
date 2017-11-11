@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="40" height="8" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" source="BBlocks.tsx"/>
- <layer name="green" width="40" height="8">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFIw0wYcGDHWBzM7F4FIwCXAAAZjAAKQ==
-  </data>
- </layer>
+<map version="1.0" orientation="orthogonal" width="40" height="8" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32">
+  <image source="blocks.png" width="96" height="32"/>
+ </tileset>
  <layer name="red" width="40" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AU4AKMWPAoGD4AAA44AAY=
+   eJxjYBgFo2AUjALaAUYceDAAAAhsAAc=
+  </data>
+ </layer>
+ <layer name="green" width="40" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUkAuYsOBRMHQAABYwAAs=
   </data>
  </layer>
  <layer name="blue" width="40" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF+AAzFA+k3YTwKBgFo4A8AAB/0AAl
+   eJxjYBgFowATMCPhUTAKhisAAB8EAAo=
   </data>
  </layer>
- <objectgroup name="crystals"/>
+ <objectgroup name="crystals" width="40" height="8"/>
 </map>
