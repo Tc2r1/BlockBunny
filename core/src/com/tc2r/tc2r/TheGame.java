@@ -9,14 +9,14 @@ import com.tc2r.tc2r.handlers.GameStateManager;
 import com.tc2r.tc2r.handlers.MyInput;
 import com.tc2r.tc2r.handlers.MyInputProcessor;
 
-public class myGame extends ApplicationAdapter {
+public class TheGame extends ApplicationAdapter {
 
 	public static final String TITLE = "Block Bunny";
 	public static final int V_Width = 320;
 	public static final int V_Height = 240;
 	public static final int SCALE = 2;
 
-	public static final float STEP = 1/60f;
+	public static final float STEP = 1 / 60f;
 	private float accum;
 
 	private SpriteBatch spriteBatch;
@@ -34,6 +34,8 @@ public class myGame extends ApplicationAdapter {
 
 		res = new Content();
 		res.loadTexture("images/bunny.png", "bunny");
+		res.loadTexture("images/crystal.png", "crystal");
+		res.loadTexture("images/hud.png", "hud");
 
 		spriteBatch = new SpriteBatch();
 		camera = new OrthographicCamera();
@@ -44,11 +46,8 @@ public class myGame extends ApplicationAdapter {
 
 	}
 
-
-
 	@Override
 	public void render() {
-
 
 		accum += Gdx.graphics.getDeltaTime();
 		while (accum >= STEP) {
@@ -57,8 +56,6 @@ public class myGame extends ApplicationAdapter {
 			gsm.render();
 			MyInput.update();
 		}
-
-
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.tc2r.tc2r.entities;
+package com.tc2r.tc2r.Sprites;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -20,27 +20,25 @@ public class B2DSprite {
 	public B2DSprite(Body body) {
 		this.body = body;
 		animation = new Animation();
-
 	}
 
-	public void setAnimation(TextureRegion[]reg, float delay){
-		animation.setFrames(reg, delay);
-		width = reg[0].getRegionWidth();
-		height = reg[0].getRegionHeight();
+	public void setAnimation(TextureRegion[]region, float delay){
+		animation.setFrames(region, delay);
+		width = region[0].getRegionWidth();
+		height = region[0].getRegionHeight();
 	}
 
 	public void update(float delta){
 		animation.update(delta);
 
 	}
-	public void render(SpriteBatch sb){
-		sb.begin();
-		sb.draw(
+	public void render(SpriteBatch spriteBatch){
+		spriteBatch.draw(
 						animation.getFrame(),
 						body.getPosition().x * B2DVars.PPM - width / 2,
 						body.getPosition().y * B2DVars.PPM - height / 2
 		);
-		sb.end();
+
 	}
 
 	public Body getBody(){

@@ -3,7 +3,7 @@ package com.tc2r.tc2r.states;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tc2r.tc2r.handlers.GameStateManager;
-import com.tc2r.tc2r.myGame;
+import com.tc2r.tc2r.TheGame;
 
 /**
  * Created by Tc2r on 11/7/2017.
@@ -13,7 +13,7 @@ import com.tc2r.tc2r.myGame;
 public abstract class GameState {
 
 	protected GameStateManager gsm;
-	protected myGame game;
+	protected TheGame game;
 	protected SpriteBatch spriteBatch;
 	protected OrthographicCamera camera;
 	protected OrthographicCamera hudCam;

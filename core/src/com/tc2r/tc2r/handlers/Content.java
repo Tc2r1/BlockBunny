@@ -12,24 +12,24 @@ import java.util.HashMap;
  */
 public class Content {
 
-	private HashMap<String, Texture> textures;
+	private HashMap<String, Texture> textureHashMap;
 
 	public Content() {
-		textures = new HashMap<String, Texture>();
+		textureHashMap = new HashMap<String, Texture>();
 	}
 
 	public void loadTexture(String path, String key) {
-		Texture tex = new Texture(Gdx.files.internal(path));
-		textures.put(key, tex);
+		Texture texture = new Texture(Gdx.files.internal(path));
+		textureHashMap.put(key, texture);
 	}
 
 	public Texture getTexture(String key) {
-		return textures.get(key);
+		return textureHashMap.get(key);
 	}
 
 	public void disposeTexture(String key) {
-		Texture tex = textures.get(key);
-		if(tex != null) tex.dispose();
+		Texture texture = textureHashMap.get(key);
+		if(texture != null) texture.dispose();
 	}
 
 }

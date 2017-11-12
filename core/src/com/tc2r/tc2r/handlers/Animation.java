@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class Animation {
 
+	private static final float DEFAULT_DELAY = 1 / 12f;
+
 	private TextureRegion[] frames;
 	private float time;
 	private float delay;
@@ -17,8 +19,9 @@ public class Animation {
 
 	public Animation() {}
 
+	// this constructor calls and assigns itself with a default delay.
 	public Animation(TextureRegion[] frames) {
-		this(frames, 1 / 12f);
+		this(frames, DEFAULT_DELAY);
 	}
 
 	public Animation(TextureRegion[] frames, float delay) {
@@ -50,7 +53,11 @@ public class Animation {
 		}
 	}
 
-	public TextureRegion getFrame() { return frames[currentFrame]; }
-	public int getTimesPlayed() { return timesPlayed; }
+	public TextureRegion getFrame() {
+		return frames[currentFrame];
+	}
+	public int getTimesPlayed() {
+		return timesPlayed;
+	}
 
 }

@@ -1,6 +1,6 @@
 package com.tc2r.tc2r.handlers;
 
-import com.tc2r.tc2r.myGame;
+import com.tc2r.tc2r.TheGame;
 import com.tc2r.tc2r.states.GameState;
 import com.tc2r.tc2r.states.Play;
 
@@ -13,19 +13,19 @@ import java.util.Stack;
  */
 public class GameStateManager {
 
-	private myGame game;
+	private TheGame game;
 
 	private Stack<GameState> gameStates;
 
 	public static final int PLAY = 90250;
 
-	public GameStateManager(myGame game) {
+	public GameStateManager(TheGame game) {
 		this.game = game;
 		gameStates = new Stack<GameState>();
 		pushState(PLAY);
 	}
 
-	public myGame getGame() {
+	public TheGame getGame() {
 		return game;
 	}
 
